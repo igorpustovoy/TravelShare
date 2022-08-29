@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './input/input.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -9,7 +11,9 @@ import { InputComponent } from './input/input.component';
     InputComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxMaskModule.forRoot(),
+    ReactiveFormsModule
   ],
   exports: [
     InputComponent

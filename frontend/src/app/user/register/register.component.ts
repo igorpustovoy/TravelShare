@@ -1,6 +1,8 @@
+import { UserService } from './../../services/user.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { RegisterValidators } from '../validators/register-validators';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +11,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -41,11 +43,12 @@ export class RegisterComponent implements OnInit {
       Validators.minLength(11),
       Validators.maxLength(11)
     ])
-  })
+  }, [RegisterValidators.match('password', 'confirmPassword')]);
 
   async register() {
     try {
-      const req = this.http.post('user/register', this.registerForm.value);
+      console.log(this.registerForm.value);
+      // this.userService.createUser(this.registerForm.value);
     } catch (error) {
       console.error(error);
     }

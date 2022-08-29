@@ -7,6 +7,7 @@ import { NavComponent } from './nav/nav.component';
 import { InputComponent } from './shared/input/input.component';
 import { SharedModule } from './shared/shared.module';
 import { UserModule } from './user/user.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,7 @@ import { UserModule } from './user/user.module';
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
