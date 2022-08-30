@@ -24,7 +24,6 @@ router.get("/username-taken", async (req, res) => {
 
   try {
     const user = await User.findOne({ username: username });
-    console.log(user);
     if (user) {
       res.json({ usernameTaken: true });
     } else {
@@ -42,18 +41,18 @@ router.post("/login", async (req, res) => {
   const user = await User.findOne({ username }).lean();
 
   if (!user) {
-    res.json({ status: "error", error: {userFound: false} });
+    return res.json({ status: "error", error: {userFound: false} });
   }
 
   if (await bcrypt.compare(password, user.password)) {
     
     const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET);
     
-    return res.json({ status: "ok", data: token });
+    return res.json({ status: "ok", token: token });
 
   }
 
-  res.json({ status: "error", error: {userFound: false} });
+  return res.json({ status: "error", error: {userFound: false} });
 
 });
 

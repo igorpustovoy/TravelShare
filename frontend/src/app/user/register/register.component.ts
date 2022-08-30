@@ -1,26 +1,34 @@
 import { UserService } from '../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterValidators } from '../validators/register-validators';
 import { UsernameTaken } from '../validators/username-taken';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements OnInit {
-  constructor(private userService: UserService, private usernameTaken: UsernameTaken) {}
+export class RegisterComponent implements OnDestroy {
+  private readonly onDestroy = new Subject<void>();
 
-  ngOnInit(): void {}
+  constructor(
+    private userService: UserService,
+    private usernameTaken: UsernameTaken
+  ) {}
 
   registerForm = new FormGroup(
     {
-      username: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-        Validators.maxLength(20),
-      ], [this.usernameTaken.validate]),
+      username: new FormControl(
+        '',
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(20),
+        ],
+        [this.usernameTaken.validate]
+      ),
       email: new FormControl('', [Validators.required, Validators.email]),
       age: new FormControl<number | null>(null, [
         Validators.required,
@@ -43,20 +51,23 @@ export class RegisterComponent implements OnInit {
     [RegisterValidators.match('password', 'confirmPassword')]
   );
 
-  async register() {
-    try {
-      console.log(this.registerForm.value);
-      this.userService.createUser({
+  register() {
+    console.log(this.registerForm.value);
+    this.userService
+      .createUser({
         username: this.registerForm.value.username as string,
         email: this.registerForm.value.email as string,
         age: this.registerForm.value.age as number,
         password: this.registerForm.value.password as string,
         phoneNumber: this.registerForm.value.phoneNumber as string,
-      }).subscribe((res) => {
+      })
+      .pipe(takeUntil(this.onDestroy))
+      .subscribe(res => {
         console.log(res);
       });
-    } catch (error) {
-      console.error(error);
-    }
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy.next();
   }
 }

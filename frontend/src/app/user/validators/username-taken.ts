@@ -11,7 +11,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class UsernameTaken implements AsyncValidator {
-  readonly validationUrl = 'http://localhost:5000/users/username-taken';
+  readonly validationUrl: string = 'http://localhost:5000/users/username-taken';
 
   constructor(private http: HttpClient) {}
 

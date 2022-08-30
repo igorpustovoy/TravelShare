@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, retry, throwError } from 'rxjs';
+import { catchError, ErrorNotification, Observable, retry, throwError } from 'rxjs';
+import ILoginResponse from 'src/app/models/LoginResponse';
 import IUser from '../../models/User';
 
 @Injectable({
@@ -14,9 +15,15 @@ export class UserService {
   createUser(user: IUser) {
     return this.http.post(`${this.baseUrl}/register`, user).pipe(
       catchError(this.handleError),
-      // retry(3)
     );
   }
+
+  loginUser(username: string, password: string) {
+    return this.http.post<ILoginResponse>(`${this.baseUrl}/login`, { username, password }).pipe(
+      catchError(this.handleError),
+    );
+  }
+  
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
