@@ -29,4 +29,7 @@
   <div *ngIf="control.errors?.['noMatch']">
     Passwords do not match
   </div>
+  <div *ngIf="control.errors?.['usernameTaken']">
+    Username already taken
+  </div>
 </ng-container>

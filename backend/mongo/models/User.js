@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema(
   {
-    name: {
+    username: {
       unique: true,
       required: true,
       type: String,
@@ -29,6 +29,14 @@ const userSchema = new Schema(
       match: [
         /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
         "Password must contain at least one number, one uppercase and one lowercase letter, and at least 8 or more characters",
+      ],
+    },
+    phoneNumber: {
+      required: true,
+      type: String,
+      match: [
+        /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{3})$/,
+        "Incorrect phone number format",
       ],
     },
   },

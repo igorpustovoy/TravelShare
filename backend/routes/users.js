@@ -18,13 +18,31 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/username-taken", async (req, res) => {
+  const { username } = req.query;
+
+
+  try {
+    const user = await User.findOne({ username: username });
+    console.log(user);
+    if (user) {
+      res.json({ usernameTaken: true });
+    } else {
+      res.json({ usernameTaken: false });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
+})
+
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
   const user = await User.findOne({ username }).lean();
 
   if (!user) {
-    res.json({ status: "error", error: "Invalid login information" });
+    res.json({ status: "error", error: {userFound: false} });
   }
 
   if (await bcrypt.compare(password, user.password)) {
@@ -35,12 +53,12 @@ router.post("/login", async (req, res) => {
 
   }
 
-  res.json({ status: "error", error: "Invalid login information" });
+  res.json({ status: "error", error: {userFound: false} });
 
 });
 
 router.post("/register", async (req, res) => {
-  const { username, email, age, password } = req.body;
+  const { username, email, age, password, phoneNumber } = req.body;
 
   const hashedPassword = await bcrypt.hash(password, 15);
   console.log(hashedPassword);
@@ -51,6 +69,7 @@ router.post("/register", async (req, res) => {
       email,
       age,
       password: hashedPassword,
+      phoneNumber
     });
     console.log("USER:", user);
     res.json({ status: "ok" });
@@ -58,7 +77,7 @@ router.post("/register", async (req, res) => {
     if (error.code === 11000) {
       return res
         .status(400)
-        .json({ status: "error", message: "Username already taken" });
+        .json({ status: "error", error: {usernameTaken: true} });
     } else {
       console.log(error);
       throw error;
