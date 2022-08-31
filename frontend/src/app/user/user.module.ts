@@ -1,3 +1,4 @@
+import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,7 +21,8 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     CommonModule,
     SharedModule,
     ReactiveFormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatIconModule
   ],
   exports: [
     RegisterComponent,

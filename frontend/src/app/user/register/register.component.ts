@@ -30,11 +30,6 @@ export class RegisterComponent implements OnDestroy {
         [this.usernameTaken.validate]
       ),
       email: new FormControl('', [Validators.required, Validators.email]),
-      age: new FormControl<number | null>(null, [
-        Validators.required,
-        Validators.min(13),
-        Validators.max(120),
-      ]),
       password: new FormControl('', [
         Validators.required,
         Validators.pattern(
@@ -57,7 +52,6 @@ export class RegisterComponent implements OnDestroy {
       .createUser({
         username: this.registerForm.value.username as string,
         email: this.registerForm.value.email as string,
-        age: this.registerForm.value.age as number,
         password: this.registerForm.value.password as string,
         phoneNumber: this.registerForm.value.phoneNumber as string,
       })

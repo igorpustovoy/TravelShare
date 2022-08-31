@@ -16,12 +16,6 @@ const userSchema = new Schema(
         "Incorrect email format",
       ],
     },
-    age: {
-      required: true,
-      type: Number,
-      min: 13,
-      max: 120,
-    },
     password: {
       required: true,
       type: String,

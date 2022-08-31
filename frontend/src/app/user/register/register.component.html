@@ -1,27 +1,21 @@
 <form [formGroup]="registerForm" (ngSubmit)="register()">
     <div>
-        <label>Username</label>
-        <app-input placeholder="Enter Username" [control]="registerForm.controls.username"></app-input>
+        <app-input placeholder="Enter Username" [control]="registerForm.controls.username"><mat-icon icon>person_outline</mat-icon></app-input>
     </div>
     <div>
-        <label>Email</label>
-        <app-input type="email" placeholder="Enter Email" [control]="registerForm.controls.email"></app-input>
+        <app-input type="email" placeholder="Enter Email" [control]="registerForm.controls.email"><mat-icon icon> mail_outline</mat-icon></app-input>
     </div>
     <div>
-        <label>Age</label>
-        <app-input type="number" placeholder="Enter Age" [control]="registerForm.controls.age"></app-input>
+        <app-input type="password" placeholder="Enter Password" [control]="registerForm.controls.password"><mat-icon icon> lock_outline</mat-icon></app-input>
     </div>
     <div>
-        <label>Password</label>
-        <app-input type="password" placeholder="Enter Password" [control]="registerForm.controls.password"></app-input>
+        <app-input type="password" placeholder="Confirm Password" [control]="registerForm.controls.confirmPassword">
+            <mat-icon *ngIf="!registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.errors" icon> lock_open</mat-icon>
+            <mat-icon *ngIf="registerForm.controls.confirmPassword.dirty && !registerForm.controls.confirmPassword.errors" icon> lock_outline</mat-icon>
+        </app-input>
     </div>
     <div>
-        <label>Confirm Password</label>
-        <app-input type="password" placeholder="Confirm Password" [control]="registerForm.controls.confirmPassword"></app-input>
-    </div>
-    <div>
-        <label>Phone Number</label>
-        <app-input placeholder="Enter Phone Number" [control]="registerForm.controls.phoneNumber" format="000-000-000"></app-input>
+        <app-input placeholder="Enter Phone Number" [control]="registerForm.controls.phoneNumber" format="000-000-000"><mat-icon icon> call</mat-icon></app-input>
     </div>
     <button type="submit" [disabled]="registerForm.invalid">Submit</button>
 </form>

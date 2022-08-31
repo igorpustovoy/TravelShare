@@ -1,0 +1,31 @@
+.inputContainer {
+    border: 1px solid gray;
+    border-radius: 5px;
+    height: 35px;
+    width: 260px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 7px;
+    .icon {
+        height: 100%;
+        // width: 40px;
+        display: flex;
+        align-items: center;
+    }
+    input {
+        width: 200px;
+        height: 70%;
+        outline: none;
+        border: none;
+    }
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    font-weight: bold;
+    width: 280px;
+    margin-top: 2px;
+}

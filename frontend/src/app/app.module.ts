@@ -10,6 +10,7 @@ import { UserModule } from './user/user.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

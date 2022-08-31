@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
 router.get("/username-taken", async (req, res) => {
   const { username } = req.query;
 
-
   try {
     const user = await User.findOne({ username: username });
     if (user) {
@@ -57,7 +56,7 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-  const { username, email, age, password, phoneNumber } = req.body;
+  const { username, email, password, phoneNumber } = req.body;
 
   const hashedPassword = await bcrypt.hash(password, 15);
   console.log(hashedPassword);
@@ -66,7 +65,6 @@ router.post("/register", async (req, res) => {
     const user = await User.create({
       username,
       email,
-      age,
       password: hashedPassword,
       phoneNumber
     });
