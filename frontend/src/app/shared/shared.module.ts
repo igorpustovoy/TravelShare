@@ -5,7 +5,7 @@ import { InputComponent } from './input/input.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { LoadingComponent } from './loading/loading.component';
     CommonModule,
     NgxMaskModule.forRoot(),
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     InputComponent,

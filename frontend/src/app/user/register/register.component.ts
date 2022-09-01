@@ -12,7 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class RegisterComponent implements OnDestroy {
   private readonly onDestroy = new Subject<void>();
-  registrationStatus: 'loading' | 'success' | 'error' | null = 'loading';
+  registrationStatus: 'loading' | 'success' | 'error' | null = null;
 
   constructor(
     private userService: UserService,

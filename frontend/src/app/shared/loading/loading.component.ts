@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./loading.component.scss']
 })
 export class LoadingComponent implements OnInit {
-  loadingMessage: string = 'Loading...';
+  loadingMessage: string = 'Please wait...';
   successMessage: string = 'Success!';
   errorMessage: string = 'Something went wrong...'; 
   @Input() status: 'loading' | 'success' | 'error' | null = null;

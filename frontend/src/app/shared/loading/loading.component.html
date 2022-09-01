@@ -1,3 +1,31 @@
-<div *ngIf="status === 'loading'" class="loading">{{ loadingMessage }}</div>
-<div *ngIf="status === 'success'" class="success">SUUCCESS</div>
-<div *ngIf="status === 'error'" class="error">ERROR</div>
+<div class="status">
+  <div *ngIf="status === 'loading'" class="loading">
+    <div class="text">
+      <div class="spinner">
+        <mat-progress-spinner
+          class="example-margin"
+          mode="indeterminate"
+          diameter="30"
+        >
+        </mat-progress-spinner>
+      </div>
+      {{ loadingMessage }}
+    </div>
+  </div>
+  <div *ngIf="status === 'success'" class="success">
+    <div class="text">
+      <div class="icon">
+        <mat-icon icon> done</mat-icon>
+      </div>
+      {{ successMessage }}
+    </div>
+  </div>
+  <div *ngIf="status === 'error'" class="error">
+    <div class="text">
+        <div class="icon">
+          <mat-icon icon> close</mat-icon>
+        </div>
+        {{ errorMessage }}
+      </div>
+  </div>
+</div>
