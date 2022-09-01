@@ -1,23 +1,61 @@
-<app-loading [status]="registrationStatus"></app-loading>
+<div class="loading"><app-loading [status]="registrationStatus"></app-loading></div>
 <form [formGroup]="registerForm" (ngSubmit)="register()">
-    <div>
-        <app-input placeholder="Enter Username" [control]="registerForm.controls.username"><mat-icon icon>person_outline</mat-icon></app-input>
-    </div>
-    <div>
-        <app-input type="email" placeholder="Enter Email" [control]="registerForm.controls.email"><mat-icon icon> mail_outline</mat-icon></app-input>
-    </div>
-    <div>
-        <app-input type="password" placeholder="Enter Password" [control]="registerForm.controls.password"><mat-icon icon> lock_outline</mat-icon></app-input>
-    </div>
-    <div>
-        <app-input type="password" placeholder="Confirm Password" [control]="registerForm.controls.confirmPassword">
-            <mat-icon *ngIf="!registerForm.controls.confirmPassword.dirty || registerForm.controls.confirmPassword.errors" icon> lock_open</mat-icon>
-            <mat-icon *ngIf="registerForm.controls.confirmPassword.dirty && !registerForm.controls.confirmPassword.errors" icon> lock_outline</mat-icon>
-        </app-input>
-    </div>
-    <div>
-        <app-input placeholder="Enter Phone Number" [control]="registerForm.controls.phoneNumber" format="000-000-000"><mat-icon icon> call</mat-icon></app-input>
-    </div>
-    <button type="submit" [disabled]="!registerForm.valid">Sign Up</button>
+  <div>
+    <app-input
+      placeholder="Enter Username"
+      [control]="registerForm.controls.username"
+      ><mat-icon icon>person_outline</mat-icon></app-input
+    >
+  </div>
+  <div>
+    <app-input
+      type="email"
+      placeholder="Enter Email"
+      [control]="registerForm.controls.email"
+      ><mat-icon icon> mail_outline</mat-icon></app-input
+    >
+  </div>
+  <div>
+    <app-input
+      type="password"
+      placeholder="Enter Password"
+      [control]="registerForm.controls.password"
+      ><mat-icon icon> lock_outline</mat-icon></app-input
+    >
+  </div>
+  <div>
+    <app-input
+      type="password"
+      placeholder="Confirm Password"
+      [control]="registerForm.controls.confirmPassword"
+    >
+      <mat-icon
+        *ngIf="
+          !registerForm.controls.confirmPassword.dirty ||
+          registerForm.controls.confirmPassword.errors
+        "
+        icon
+      >
+        lock_open</mat-icon
+      >
+      <mat-icon
+        *ngIf="
+          registerForm.controls.confirmPassword.dirty &&
+          !registerForm.controls.confirmPassword.errors
+        "
+        icon
+      >
+        lock_outline</mat-icon
+      >
+    </app-input>
+  </div>
+  <div>
+    <app-input
+      placeholder="Enter Phone Number"
+      [control]="registerForm.controls.phoneNumber"
+      format="000-000-000"
+      ><mat-icon icon> call</mat-icon></app-input
+    >
+  </div>
+  <button type="submit" [disabled]="!registerForm.valid">Sign Up</button>
 </form>
-

@@ -1,3 +1,6 @@
+.loading {
+    padding: 20px 0;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -22,7 +25,7 @@ form {
     }
     button:disabled,
     button[disabled]{
-        background-color: rgb(109, 120, 164);
+        background-color: rgb(112, 134, 223);
         
         cursor: default;
     }

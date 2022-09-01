@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RegisterValidators } from '../validators/register-validators';
 import { UsernameTaken } from '../validators/username-taken';
 import { Subject, takeUntil } from 'rxjs';
+import { MatDialogRef } from '@angular/material/dialog';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +18,8 @@ export class RegisterComponent implements OnDestroy {
 
   constructor(
     private userService: UserService,
-    private usernameTaken: UsernameTaken
+    private usernameTaken: UsernameTaken,
+    private dialogRef: MatDialogRef<LoginDialogComponent>
   ) {}
 
   registerForm = new FormGroup(
@@ -59,12 +62,15 @@ export class RegisterComponent implements OnDestroy {
       })
       .pipe(takeUntil(this.onDestroy))
       .subscribe((res) => {
-        console.log("RESPONSE:", res);
-        if(res.status === 'error') {
+        console.log('RESPONSE:', res);
+        if (res.status === 'error') {
           this.registrationStatus = 'error';
         }
-        if(res.status === 'ok') {
-        this.registrationStatus = 'success';
+        if (res.status === 'ok') {
+          this.registrationStatus = 'success';
+          setTimeout(() => {
+            this.dialogRef.close();
+          }, 1000);
         }
       });
   }

@@ -1,11 +1,23 @@
+<div class="loading">
+  <app-loading [status]="loginStatus"></app-loading>
+</div>
 <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div>
-        <label>Username</label>
-        <app-input placeholder="Enter Username" [control]="loginForm.controls.username"></app-input>
-    </div>
-    <div>
-        <label>Password</label>
-        <app-input type="password" placeholder="Enter Password" [control]="loginForm.controls.password"></app-input>
-    </div>
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  <div>
+    <label>Username</label>
+    <app-input
+      placeholder="Enter Username"
+      [control]="loginForm.controls.username"
+      ><mat-icon icon>person_outline</mat-icon></app-input
+    >
+  </div>
+  <div>
+    <label>Password</label>
+    <app-input
+      type="password"
+      placeholder="Enter Password"
+      [control]="loginForm.controls.password"
+      ><mat-icon icon> lock_outline</mat-icon></app-input
+    >
+  </div>
+  <button type="submit" [disabled]="loginForm.invalid">Login</button>
 </form>

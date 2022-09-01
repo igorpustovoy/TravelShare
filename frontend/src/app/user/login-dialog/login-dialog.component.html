@@ -20,16 +20,18 @@
     <div *ngIf="section === 'login'" class="loginSection">
       <div class="upperText">
         <div class="header">
-          <div>Join over 25 million</div>
-          <div>explorers from around the globe.</div>
+          <div>Welcome Back</div>
+          <div>We missed you!</div>
         </div>
         <div class="content">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsa, facere
           nemo? Nisi, molestiae adipisci pariatur.
         </div>
       </div>
-      <app-login></app-login>
-      <div class="swapPanels">
+      <div class="form">
+        <app-login></app-login>
+      </div>
+      <div class="swapPanels swapPanelsLogin">
         <div>Not a member yet?</div>
         <div (click)="changeSection()">Get Started</div>
       </div>
@@ -46,7 +48,7 @@
         </div>
       </div>
       <app-register></app-register>
-      <div class="swapPanels">
+      <div class="swapPanels swapPanelsRegister">
         <div>Already a member?</div>
         <div (click)="changeSection()">Login</div>
       </div>
