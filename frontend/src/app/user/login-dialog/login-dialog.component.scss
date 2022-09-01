@@ -81,6 +81,7 @@
     .swapPanels {
       margin-top: 15px;
       display: flex;
+      justify-content: center;
       gap: 6px;
       div:first-child {
         font-weight: bold;

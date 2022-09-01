@@ -12,6 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class RegisterComponent implements OnDestroy {
   private readonly onDestroy = new Subject<void>();
+  registrationStatus: 'loading' | 'success' | 'error' | null = 'loading';
 
   constructor(
     private userService: UserService,
@@ -47,6 +48,7 @@ export class RegisterComponent implements OnDestroy {
   );
 
   register() {
+    this.registrationStatus = 'loading';
     console.log(this.registerForm.value);
     this.userService
       .createUser({
@@ -56,8 +58,14 @@ export class RegisterComponent implements OnDestroy {
         phoneNumber: this.registerForm.value.phoneNumber as string,
       })
       .pipe(takeUntil(this.onDestroy))
-      .subscribe(res => {
-        console.log(res);
+      .subscribe((res) => {
+        console.log("RESPONSE:", res);
+        if(res.status === 'error') {
+          this.registrationStatus = 'error';
+        }
+        if(res.status === 'ok') {
+        this.registrationStatus = 'success';
+        }
       });
   }
 

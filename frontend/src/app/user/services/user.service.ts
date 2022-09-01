@@ -13,7 +13,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(user: IUser) {
-    return this.http.post(`${this.baseUrl}/register`, user).pipe(
+    return this.http.post<{status: string, error?: any}>(`${this.baseUrl}/register`, user).pipe(
       catchError(this.handleError),
     );
   }

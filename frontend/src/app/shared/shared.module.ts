@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { InputComponent } from './input/input.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoadingComponent } from './loading/loading.component';
 
 
 
 @NgModule({
   declarations: [
-    InputComponent
+    InputComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule
   ],
   exports: [
-    InputComponent
+    InputComponent,
+    LoadingComponent
   ]
 })
 export class SharedModule { }

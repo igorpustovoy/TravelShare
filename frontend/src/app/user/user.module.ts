@@ -8,6 +8,7 @@ import { InputComponent } from '../shared/input/input.component';
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
+import { LoadingComponent } from '../shared/loading/loading.component';
 
 
 
@@ -22,7 +23,7 @@ import { LoginDialogComponent } from './login-dialog/login-dialog.component';
     SharedModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     RegisterComponent,

@@ -59,7 +59,6 @@ router.post("/register", async (req, res) => {
   const { username, email, password, phoneNumber } = req.body;
 
   const hashedPassword = await bcrypt.hash(password, 15);
-  console.log(hashedPassword);
 
   try {
     const user = await User.create({
@@ -69,16 +68,14 @@ router.post("/register", async (req, res) => {
       phoneNumber
     });
     console.log("USER:", user);
-    res.json({ status: "ok" });
+    return res.json({ status: "ok" });
   } catch (error) {
+    console.log(error);
     if (error.code === 11000) {
       return res
-        .status(400)
         .json({ status: "error", error: {usernameTaken: true} });
-    } else {
-      console.log(error);
-      throw error;
     }
+    res.json({ status: "error", error: "Something went wrong" });
   }
 });
 

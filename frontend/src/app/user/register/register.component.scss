@@ -20,4 +20,10 @@ form {
             background-color: var(--main_hover)
         }
     }
+    button:disabled,
+    button[disabled]{
+        background-color: rgb(109, 120, 164);
+        
+        cursor: default;
+    }
 }
