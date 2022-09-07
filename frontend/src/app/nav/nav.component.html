@@ -1,8 +1,19 @@
-<div class="navbar">
-    <div class="options">
-        <a>Travel List</a>
-        <a>My profile</a>
-        <a></a>
-        <div (click)="openLoginPanel()">Login / Register</div>
-    </div>
+<div class="navbar" [ngClass]="{ 'mainPage': rla.isActive }">
+  <div class="logoSection">
+    <img *ngIf="rla.isActive" src="/assets/imgs/logo_3_white.png">
+    <img *ngIf="!rla.isActive" src="/assets/imgs/logo_3.png">
+    <a
+      routerLink="/"
+      routerLinkActive="active-link"
+      #rla="routerLinkActive"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >TravelShare</a
+    >
+  </div>
+  <div class="options">
+    <a routerLink="/travel-list">Travel List</a>
+    <a>My profile</a>
+    <a></a>
+    <div (click)="openLoginPanel()">Login / Register</div>
+  </div>
 </div>

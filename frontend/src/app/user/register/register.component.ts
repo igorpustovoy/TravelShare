@@ -14,7 +14,7 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 })
 export class RegisterComponent implements OnDestroy {
   private readonly onDestroy = new Subject<void>();
-  registrationStatus: 'loading' | 'success' | 'error' | null = null;
+  public registrationStatus: 'loading' | 'success' | 'error' | null = null;
 
   constructor(
     private userService: UserService,

@@ -1,0 +1,10 @@
+.titlePage {
+    img {
+        left: 0;
+        top: -400px;
+        position: absolute;
+        width: 100%;
+        min-height: calc(100vh + 400px);
+        z-index: -1;
+    }
+}
