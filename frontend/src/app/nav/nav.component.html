@@ -1,8 +1,9 @@
-<div class="navbar" [ngClass]="{ 'mainPage': rla.isActive }">
+<div class="navbar" [ngClass]="{ mainPage: rla.isActive }">
   <div class="logoSection">
-    <img *ngIf="rla.isActive" src="/assets/imgs/logo_3_white.png">
-    <img *ngIf="!rla.isActive" src="/assets/imgs/logo_3.png">
+    <img *ngIf="rla.isActive" src="/assets/imgs/logo_white.png" />
+    <img *ngIf="!rla.isActive" src="/assets/imgs/logo.png" />
     <a
+      class="logoText"
       routerLink="/"
       routerLinkActive="active-link"
       #rla="routerLinkActive"
@@ -11,9 +12,11 @@
     >
   </div>
   <div class="options">
+    <a>Home</a>
     <a routerLink="/travel-list">Travel List</a>
     <a>My profile</a>
-    <a></a>
-    <div (click)="openLoginPanel()">Login / Register</div>
+  </div>
+  <div class="account">
+    <a (click)="openLoginPanel()">Login / Register</a>
   </div>
 </div>
