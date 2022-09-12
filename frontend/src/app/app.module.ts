@@ -12,12 +12,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
+import { PhotoPanelComponent } from './home/photo-panel/photo-panel.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    HomeComponent
+    HomeComponent,
+    PhotoPanelComponent
   ],
   imports: [
     BrowserModule,

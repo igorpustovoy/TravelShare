@@ -5,16 +5,12 @@ import {
   transition,
   trigger,
 } from '@angular/animations';
-import { DOCUMENT } from '@angular/common';
 import {
   Component,
-  ElementRef,
   Inject,
   OnInit,
-  ViewChild,
 } from '@angular/core';
 import { gsap } from 'gsap';
-import { CustomEase } from 'gsap/all';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -43,7 +39,7 @@ export class HomeComponent implements OnInit {
   // @ViewChild('.lowerText', { static: true })
   // lowerText!: ElementRef<HTMLDivElement>;
 
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor() {}
 
   ngOnInit(): void {
     this.initScrollingAnimations();
@@ -59,7 +55,6 @@ export class HomeComponent implements OnInit {
         trigger: '.scrollCircle',
         start: 'bottom bottom',
         scrub: 2,
-        markers: true,
       },
     });
     gsap.fromTo(
@@ -73,7 +68,7 @@ export class HomeComponent implements OnInit {
         ease: 'power1.in',
         scrollTrigger: {
           trigger: '.upperTitleText',
-          toggleActions: 'restart none none none',
+          toggleActions: 'restart none restart none',
         },
       }
     );
@@ -89,7 +84,7 @@ export class HomeComponent implements OnInit {
         opacity: 1,
         scrollTrigger: {
           trigger: '.lowerTitleText',
-          toggleActions: 'restart none none none',
+          toggleActions: 'restart none restart none',
         },
         'font-size': '3.5rem',
       }
@@ -98,27 +93,26 @@ export class HomeComponent implements OnInit {
       y: -80,
       duration: 1,
       scrollTrigger: {
-        trigger: 'image1',
+        trigger: '.image1',
         scrub: true,
-        start: 'bottom center',
+        // start: 'bottom center',
       },
     });
     gsap.to('.image2', {
       y: -150,
       duration: 1,
       scrollTrigger: {
-        trigger: 'image2',
+        trigger: '.image2',
         scrub: true,
-        start: 'bottom center',
+        // start: 'bottom center',
       },
     });
     gsap.to('.section', {
-      y: -90,
+      y: -130,
       duration: 1,
       scrollTrigger: {
-        trigger: 'section',
+        trigger: '.leftSide',
         scrub: true,
-        start: 'bottom center',
       },
     });
   }

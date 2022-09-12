@@ -1,0 +1,79 @@
+.photoPanel {
+    padding-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // height: 200vh;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    .infoSection {
+        width: 90%;
+        display: flex;
+        justify-content: space-between;
+        padding-bottom: 30px;
+        .infoText {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            color: black;
+            .upperInfo {
+                font-family: Georgia, 'Times New Roman', Times, serif;
+                font-size: 2.5rem;
+                line-height: 3rem;
+                font-weight: 500;
+                max-width: 450px;
+            }
+            .lowerInfo {
+                max-width: 410px;
+                font-size: 1.1rem;
+                line-height: 1.8rem;
+                font-weight: 300;
+            }
+        }
+        img {
+            position: relative;
+            right: 100px;
+            height: 100%;
+            opacity: 0.5;
+            z-index: -1;
+        }
+    }
+    .pictureGrid {
+        display: grid;
+        width: 100%;
+        justify-content: center;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 35px;
+        // margin: 0 auto;
+        width: 90%;
+        height: 100%;
+        .imageContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            visibility: hidden;
+            img {
+                width: 100%;
+            }
+            div {
+                text-transform: capitalize;
+                width: 100%;
+            }
+            .upperDescription {
+                font-family: sans-serif;
+                font-size: 0.9rem;
+                font-weight: 500;
+                margin-top: 10px;
+            }
+            .lowerDescription {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                font-size: 1.4rem;
+                font-weight: 500;
+                margin-top: 5px;
+            }
+        }
+    }
+}
