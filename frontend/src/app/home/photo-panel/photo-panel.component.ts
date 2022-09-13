@@ -17,32 +17,38 @@ export class PhotoPanelComponent implements OnInit {
   }
 
   initScrollingAnimations() {
+    for (let i = 1; i < 7; i++) {
+      gsap.fromTo(
+        `.imageContainer${i}`,
+        {
+          y: 100,
+          autoAlpha: 0,
+          opacity: 0,
+        },
+        {
+          autoAlpha: 1,
+          duration: 1.2,
+          y: 0,
+          opacity: 1,
+          // stagger: 0.2,
+          scrollTrigger: {
+            trigger: `.imageContainer${i}`,
+          },
+        }
+      );
+    }
     gsap.fromTo(
-      '.imageContainer',
+      '.cameraImage',
       {
         y: 100,
-        autoAlpha: 0,
-        opacity: 0,
       },
       {
-        autoAlpha: 1,
-        duration: 1.5,
-        y: 0,
-        opacity: 1,
-        stagger: 0.2,
+        y: -130,
         scrollTrigger: {
-          trigger: '.imageContainer',
+          trigger: '.cameraImage',
+          scrub: true,
         },
       }
     );
-    gsap.fromTo('.cameraImage', {
-      y: 200,
-    }, {
-      y: -200,
-      scrollTrigger: {
-        trigger: '.cameraImage',
-        scrub: true,
-      },
-    });
   }
 }

@@ -1,0 +1,50 @@
+.footer {
+    z-index: 99;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    .upperFooter {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        text-transform: uppercase;
+        font-weight: 300;
+        line-height: 1.3rem;
+        letter-spacing: 0.1rem;
+        max-width: 1280px;
+        width: 90%;
+        padding-top: 50px;
+        padding-bottom: 50px;
+        .footerSection {
+            font-size: 0.75rem;
+            .header {
+                font-size: 1rem;
+                font-weight: 400;
+                color: #b1b886;
+                margin-bottom: 5px;
+            }
+        }
+        .section1 {
+            img {
+                width: 150px
+            }
+            .companyName {
+                font-size: 1.3rem;
+            }
+        }
+    }
+    .line {
+        width: 90%;
+        height: 2px;
+        background-color: white;
+        max-width: 1280px;
+    }
+    .lowerFooter {
+        padding-top: 50px;
+        width: 90%;
+        max-width: 1280px;
+    }
+}
