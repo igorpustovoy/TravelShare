@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './home/home.component';
 import { PhotoPanelComponent } from './home/photo-panel/photo-panel.component';
 import { FooterComponent } from './footer/footer.component';
+import { IonicModule } from "@ionic/angular";
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserAnimationsModule,
     MatDialogModule,
     MatIconModule,
-    
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
