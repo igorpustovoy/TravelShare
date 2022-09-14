@@ -45,6 +45,10 @@ export class HomeComponent implements OnInit {
     this.initScrollingAnimations();
   }
 
+  checkNavbarPosition(event: Event) {
+    console.log(event);
+  }
+
   initScrollingAnimations() {
     gsap.to('.scrollText', {
       duration: 1,

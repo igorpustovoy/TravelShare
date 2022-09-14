@@ -6,12 +6,14 @@ import { NgxMaskModule } from 'ngx-mask';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoadingComponent } from './loading/loading.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ScrollPositionDirective } from './directives/scroll-position.directive';
 
 
 @NgModule({
   declarations: [
     InputComponent,
-    LoadingComponent
+    LoadingComponent,
+    ScrollPositionDirective,
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   ],
   exports: [
     InputComponent,
-    LoadingComponent
+    LoadingComponent,
+    ScrollPositionDirective
   ]
 })
 export class SharedModule { }

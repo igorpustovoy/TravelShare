@@ -32,7 +32,8 @@ import { IonicModule } from "@ionic/angular";
     BrowserAnimationsModule,
     MatDialogModule,
     MatIconModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot(),
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
