@@ -20,40 +20,43 @@ export class NavComponent implements OnInit {
   }
 
   initScrollingAnimations() {
+    const showNav = gsap.fromTo(
+      '.navbar',
+      {
+        opacity: 0,
+        visibility: 'hidden',
+        // paused: true,
+      },
+      {
+        visibility: 'visible',
+        opacity: 1,
+        duration: 0.4,
+      }
+    );
 
-    const showNav = gsap.fromTo('.navbar', { 
-      opacity: 0,
-      visibility: 'hidden',
-      // paused: true,
-    }, {
-      visibility: 'visible',
-      opacity: 1,
-      duration: 0.4
-    });
-    
     ScrollTrigger.create({
-      start: "top top",
+      start: 'top top',
       end: 99999,
       onUpdate: (self) => {
-        self.direction === -1 ? showNav.play() :  showNav.reverse()
-      }
+        self.direction === -1 ? showNav.play() : showNav.reverse();
+      },
     });
   }
 
   openLoginPanel() {
     let dialogRef = this.dialog.open(LoginDialogComponent, {
       data: {},
-      panelClass: 'my-custom-dialog-class'
+      panelClass: 'my-custom-dialog-class',
     });
 
-    dialogRef.afterOpened().subscribe(result => {
-      console.log('The dialog was opened');
+    dialogRef.afterOpened().subscribe((result) => {
       this.dialogOpen = true;
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      this.dialogOpen = false;
-    });    
+    dialogRef.afterClosed().subscribe((result) => {
+      setTimeout(() => {
+        this.dialogOpen = false;
+      }, 300);
+    });
   }
 }
