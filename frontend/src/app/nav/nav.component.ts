@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../user/login-dialog/login-dialog.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import {Overlay} from '@angular/cdk/overlay';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,7 +13,7 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public overlay: Overlay) {}
   public dialogOpen: boolean = false;
 
   ngOnInit(): void {
@@ -45,6 +46,7 @@ export class NavComponent implements OnInit {
 
   openLoginPanel() {
     let dialogRef = this.dialog.open(LoginDialogComponent, {
+      scrollStrategy: this.overlay.scrollStrategies.block(),
       data: {},
       panelClass: 'my-custom-dialog-class',
     });
