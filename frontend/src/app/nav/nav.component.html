@@ -12,11 +12,14 @@
     >
   </div>
   <div class="options">
-    <a>Home</a>
+    <a routerLink="/">Home</a>
     <a routerLink="/travel-list">Travel List</a>
-    <a>My profile</a>
+    <a *ngIf="loggedIn" routerLink="/profile">My profile</a>
   </div>
-  <div class="account">
+  <div *ngIf="!loggedIn" class="account">
     <a (click)="openLoginPanel()">Login / Register</a>
+  </div>
+  <div *ngIf="loggedIn" class="account">
+    <a (click)="logout()">Logout</a>
   </div>
 </div>

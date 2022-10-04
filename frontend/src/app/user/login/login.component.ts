@@ -49,6 +49,9 @@ export class LoginComponent implements OnDestroy {
             res.userInfo?.phoneNumber as string
           );
           localStorage.setItem('user_id', res.userInfo?.id as string);
+
+          window.dispatchEvent( new Event('storage') );
+          
           setTimeout(() => {
             this.dialogRef.close();
           }, 1000);

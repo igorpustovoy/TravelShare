@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginDialogComponent } from '../user/login-dialog/login-dialog.component';
 import { gsap } from 'gsap';
@@ -13,11 +13,35 @@ gsap.registerPlugin(ScrollTrigger);
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
-  constructor(public dialog: MatDialog, public overlay: Overlay) {}
   public dialogOpen: boolean = false;
+  public loggedIn: boolean = false;
+
+  constructor(public dialog: MatDialog, public overlay: Overlay) {}
+  
+  @HostListener('window:storage')
+  onStorageChange() {
+    this.setLoginStatus();
+  }
+
+  logout() {
+    console.log('logout');
+    localStorage.clear();
+    window.dispatchEvent( new Event('storage') );
+  }
 
   ngOnInit(): void {
+    this.setLoginStatus();
     this.initScrollingAnimations();
+  }
+
+  setLoginStatus() {
+    const token = localStorage.getItem('auth_token');
+    // console.log(token);
+    if (token) {
+      this.loggedIn = true;
+    } else {
+      this.loggedIn = false;
+    }
   }
 
   initScrollingAnimations() {

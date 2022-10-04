@@ -13,12 +13,12 @@ export class ScrollPositionDirective {
     // console.log(event)
     const position: number = (event.target as Document).scrollingElement?.scrollTop as number;
 
-    if(position === 0) {
+    if(position <= 50) {
       setTimeout(() => {
       this.renderer.addClass(this.element.nativeElement, 'navbar-transparent');
       }, 200);
     } else {
-      if (this.previousPosition !== null && this.previousPosition > position) {
+      if (this.previousPosition !== null && this.previousPosition > position && position > 150) {
       this.renderer.removeClass(this.element.nativeElement, 'navbar-transparent');
     }
 
