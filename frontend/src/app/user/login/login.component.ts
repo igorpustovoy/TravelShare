@@ -40,6 +40,7 @@ export class LoginComponent implements OnDestroy {
           this.loginStatus = 'error';
         }
         if (res.status === 'ok') {
+          // console.log(res);
           this.loginStatus = 'success';
           localStorage.setItem('auth_token', res.token as string);
           localStorage.setItem('username', res.userInfo?.username as string);
@@ -51,7 +52,7 @@ export class LoginComponent implements OnDestroy {
           localStorage.setItem('user_id', res.userInfo?.id as string);
 
           window.dispatchEvent( new Event('storage') );
-          
+
           setTimeout(() => {
             this.dialogRef.close();
           }, 1000);

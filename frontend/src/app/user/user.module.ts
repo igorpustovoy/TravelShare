@@ -9,6 +9,7 @@ import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { LoadingComponent } from '../shared/loading/loading.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 
 
@@ -16,7 +17,8 @@ import { LoadingComponent } from '../shared/loading/loading.component';
   declarations: [
     LoginComponent,
     RegisterComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    UserProfileComponent
   ],
   imports: [
     CommonModule,

@@ -18,6 +18,8 @@ import { IonicModule } from "@ionic/angular";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+import { ProductFormComponent } from './product/product-form/product-form.component';
+import { PostFormComponent } from './post/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { environment } from 'src/environments/environment';
     NavComponent,
     HomeComponent,
     PhotoPanelComponent,
-    FooterComponent
+    FooterComponent,
+    ProductFormComponent,
+    PostFormComponent
   ],
   imports: [
     BrowserModule,

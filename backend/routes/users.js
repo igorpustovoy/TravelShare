@@ -5,7 +5,8 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../mongo/models/User");
 
-const JWT_SECRET = 'dsa!78979dh0(#$dsa9q2dhn9qchd90qh@#dhaspashdlaksd-3294c23u4209ncdna092';
+const JWT_SECRET =
+  "dsa!78979dh0(#$dsa9q2dhn9qchd90qh@#dhaspashdlaksd-3294c23u4209ncdna092";
 
 //Only in development
 router.get("/", async (req, res) => {
@@ -32,7 +33,7 @@ router.get("/username-taken", async (req, res) => {
     console.log(error);
     res.status(500).json({ message: error.message });
   }
-})
+});
 
 router.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -40,19 +41,28 @@ router.post("/login", async (req, res) => {
   const user = await User.findOne({ username }).lean();
 
   if (!user) {
-    return res.json({ status: "error", error: {userFound: false} });
+    return res.json({ status: "error", error: { userFound: false } });
   }
 
   if (await bcrypt.compare(password, user.password)) {
-    
-    const token = jwt.sign({ id: user._id, username: user.username }, JWT_SECRET);
-    
-    return res.json({ status: "ok", token: token });
+    const token = jwt.sign(
+      { id: user._id, username: user.username },
+      JWT_SECRET
+    );
 
+    return res.json({
+      status: "ok",
+      token: token,
+      userInfo: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+      },
+    });
   }
 
-  return res.json({ status: "error", error: {userFound: false} });
-
+  return res.json({ status: "error", error: { userFound: false } });
 });
 
 router.post("/register", async (req, res) => {
@@ -65,15 +75,28 @@ router.post("/register", async (req, res) => {
       username,
       email,
       password: hashedPassword,
-      phoneNumber
+      phoneNumber,
     });
-    console.log("USER:", user);
-    return res.json({ status: "ok" });
+
+    const token = jwt.sign(
+      { id: user._id, username: user.username },
+      JWT_SECRET
+    );
+
+    return res.json({
+      status: "ok",
+      token: token,
+      userInfo: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+      },
+    });
   } catch (error) {
     console.log(error);
     if (error.code === 11000) {
-      return res
-        .json({ status: "error", error: {usernameTaken: true} });
+      return res.json({ status: "error", error: { usernameTaken: true } });
     }
     res.json({ status: "error", error: "Something went wrong" });
   }

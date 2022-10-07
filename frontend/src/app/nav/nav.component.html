@@ -14,7 +14,7 @@
   <div class="options">
     <a routerLink="/">Home</a>
     <a routerLink="/travel-list">Travel List</a>
-    <a *ngIf="loggedIn" routerLink="/profile">My profile</a>
+    <a *ngIf="loggedIn" [routerLink]="['/users', username]">My profile</a>
   </div>
   <div *ngIf="!loggedIn" class="account">
     <a (click)="openLoginPanel()">Login / Register</a>

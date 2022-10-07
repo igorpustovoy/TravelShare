@@ -1,3 +1,4 @@
+import { UserProfileComponent } from './user/user-profile/user-profile.component';
 import { InputComponent } from './shared/input/input.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path: 'travel-list',
     component: InputComponent
+  },
+  {
+    path: 'users/:username',
+    component: UserProfileComponent
   },
   {
     path: '**',

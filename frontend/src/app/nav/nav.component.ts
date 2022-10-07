@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 export class NavComponent implements OnInit {
   public dialogOpen: boolean = false;
   public loggedIn: boolean = false;
+  public username: string = '';
 
   constructor(public dialog: MatDialog, public overlay: Overlay) {}
   
@@ -39,6 +40,7 @@ export class NavComponent implements OnInit {
     // console.log(token);
     if (token) {
       this.loggedIn = true;
+      this.username = localStorage.getItem('username') as string;
     } else {
       this.loggedIn = false;
     }

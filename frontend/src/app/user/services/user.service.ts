@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, ErrorNotification, Observable, retry, throwError } from 'rxjs';
 import ILoginResponse from 'src/app/models/LoginResponse';
+import IRegisterResponse from 'src/app/models/RegisterResponse';
 import IUser from '../../models/User';
 
 @Injectable({
@@ -13,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   createUser(user: IUser) {
-    return this.http.post<{status: string, error?: any}>(`${this.baseUrl}/register`, user).pipe(
+    return this.http.post<IRegisterResponse>(`${this.baseUrl}/register`, user).pipe(
       catchError(this.handleError),
     );
   }

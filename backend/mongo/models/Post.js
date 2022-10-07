@@ -5,13 +5,17 @@ const postSchema = new Schema(
         description: {
             type: String,
             required: true,
-            minLength: 3,
+            minLength: 1,
         },
         author: {
             type: Schema.Types.ObjectId,
             ref: "User",
             required: true,
         },
+        image: {
+            type: String,
+            required: true,
+        }
     }
 )
 

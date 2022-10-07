@@ -67,6 +67,17 @@ export class RegisterComponent implements OnDestroy {
           this.registrationStatus = 'error';
         }
         if (res.status === 'ok') {
+          localStorage.setItem('auth_token', res.token as string);
+          localStorage.setItem('username', res.userInfo?.username as string);
+          localStorage.setItem('email', res.userInfo?.email as string);
+          localStorage.setItem(
+            'phoneNumber',
+            res.userInfo?.phoneNumber as string
+          );
+          localStorage.setItem('user_id', res.userInfo?.id as string);
+          
+          window.dispatchEvent( new Event('storage') );
+
           this.registrationStatus = 'success';
           setTimeout(() => {
             this.dialogRef.close();
