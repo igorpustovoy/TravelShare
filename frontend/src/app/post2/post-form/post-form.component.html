@@ -1,8 +1,0 @@
-<form [formGroup]="postForm" (ngSubmit)="addPost()">
-    <div>
-        <app-input placeholder="Enter image url" [control]="postForm.controls.image"></app-input>
-    </div>
-    <div>
-        <app-input [control]="postForm.controls.description"></app-input>
-    </div>
-</form>

@@ -18,8 +18,7 @@ import { IonicModule } from "@ionic/angular";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
-import { ProductFormComponent } from './product/product-form/product-form.component';
-import { PostFormComponent } from './post/post-form/post-form.component';
+import { TravelListComponent } from './travel-list/travel-list.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { PostFormComponent } from './post/post-form/post-form.component';
     HomeComponent,
     PhotoPanelComponent,
     FooterComponent,
-    ProductFormComponent,
-    PostFormComponent
+    TravelListComponent,
   ],
   imports: [
     BrowserModule,

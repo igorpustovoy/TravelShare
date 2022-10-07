@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostFormComponent } from './post-form.component';
+import { TravelListComponent } from './travel-list.component';
 
-describe('PostFormComponent', () => {
-  let component: PostFormComponent;
-  let fixture: ComponentFixture<PostFormComponent>;
+describe('TravelListComponent', () => {
+  let component: TravelListComponent;
+  let fixture: ComponentFixture<TravelListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostFormComponent ]
+      declarations: [ TravelListComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PostFormComponent);
+    fixture = TestBed.createComponent(TravelListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
