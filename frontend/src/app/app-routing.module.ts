@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './user/login/login.component';
+import { TravelListComponent } from './travel-list/travel-list.component';
 
 const routes: Routes = [
   {
@@ -12,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'travel-list',
-    component: InputComponent
+    component: TravelListComponent
   },
   {
     path: 'users/:username',

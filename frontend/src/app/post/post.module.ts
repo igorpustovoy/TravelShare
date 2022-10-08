@@ -14,6 +14,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     SharedModule,
     ReactiveFormsModule
+  ],
+  exports: [
+    PostFormComponent
   ]
 })
 export class PostModule { }

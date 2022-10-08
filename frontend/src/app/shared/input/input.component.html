@@ -30,9 +30,12 @@
   <div class="error" *ngIf="control.errors?.['max']">
     Age must be lower than 120
   </div>
-  <div class="error" *ngIf="control.errors?.['pattern']">
+  <div class="error" *ngIf="type == 'password' && control.errors?.['pattern']">
     Password must be at least 8 characters long, have 1 uppercase letter, 1
     lowercase letter and 1 number.
+  </div>
+  <div class="error" *ngIf="type == 'url' && control.errors?.['pattern']">
+    Please enter a valid image url.
   </div>
   <div class="error" *ngIf="control.errors?.['noMatch']">
     Passwords do not match

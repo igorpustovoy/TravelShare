@@ -19,6 +19,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { TravelListComponent } from './travel-list/travel-list.component';
+import { PostModule } from './post/post.module';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { TravelListComponent } from './travel-list/travel-list.component';
     MatIconModule,
     IonicModule.forRoot(),
     SharedModule,
+    PostModule,
     StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states

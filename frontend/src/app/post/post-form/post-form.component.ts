@@ -31,15 +31,18 @@ export class PostFormComponent implements OnInit {
   addPost() {
     this.registrationStatus = 'loading';
     console.log(this.postForm.value);
-    const authorId = localStorage.getItem('userId');
-    if (authorId) {
+    const authorId = localStorage.getItem('user_id');
+    const token = localStorage.getItem('auth_token');
+    console.log(authorId && token);
+    if (authorId && token) {
       this.postService
         .addPost({
           description: this.postForm.value.description as string,
           image: this.postForm.value.image as string,
           authorId,
-        })
+        }, token)
         .subscribe((res) => {
+          console.log("RES:", res);
           if (res.status === "error") {
             this.registrationStatus = "error";
           }
